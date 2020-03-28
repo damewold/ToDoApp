@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,9 +21,5 @@
   "bugs": {
     "url": "https://github.com/damewold/weekend-sql-to-do-list/issues"
   },
-  "homepage": "https://github.com/damewold/weekend-sql-to-do-list#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "pg": "^7.18.2"
-  }
+  "homepage": "https://github.com/damewold/weekend-sql-to-do-list#readme"
 }
