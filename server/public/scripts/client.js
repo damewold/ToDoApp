@@ -8,19 +8,30 @@ console.log('jquery');
 
 })
 
-/*
-Things to include in a TODO list
-1.status Done-is it complete or not, once the complete button is clicked it should show a tick sign in its place
-2.Task or Project to be done-an input with an add button
-3.Due date 
-4.Priority-urgent and important, urgent and unimportant, important but is not urgent
-5.Delete button that will delete the whole task
+function setupClickListeners (){
+    $( '#addButton' ).on( 'click', function(){
+        console.log( 'in addButton on click' );
+        // get user input and put in an object
+        let taskToSend = {
+          name : $('#taskIn').val(),
+          age : $('#dueDateIn').val(),
+        };
+        // call saveTask with the new object
+        saveTask( taskToSend );
+      });     
+};
 
-I will have three tables that will catagorize the 
-the tasks based on priority 
-1.urgent and important
-3.urgent and unimportant
-2.not urgent and important
-4.not urgent and not important
-*/
+function getKoalas(){
+    console.log( 'in getKoalas' );
+  // ajax call to server to get koalas
+    $.ajax({
+      method: 'GET',
+      url: '/tasks',
+    }).then((response) => {
+      console.log(`Got tasks from server`, response);
+      renderKoalas(response);
+    }).catch((error) => {
+      console.log(`error in GET`, error);
+    });
+}//end getTask
 
