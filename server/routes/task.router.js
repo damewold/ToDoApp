@@ -17,7 +17,7 @@ taskRouter.get('/', (req, res) => {
 
 taskRouter.post('/', (req, res) => {
     console.log('tasks arrived on server', req.body);
-    let taskObj = req.body;
+     taskObj = req.body;
     //add the tasks to the database
     let sqlText = `INSERT INTO "tasksTable" ("status,"task","dueDate") VALUES($1,$2,$3);`;
     pool.query(sqlText, [taskobj.status,taskobj.task, taskObj.dueDate])
@@ -46,6 +46,25 @@ taskRouter.delete('/:id', (req, res) => {
     })
 });
 
+//PUT
+
+taskRouter.put(`/:id`, (req, res) => {
+    let taskObj = req.body; //this is the information about the task, 
+    //even though we only care about the status right now, I'm sending a whole task
+    let taskId = req.params.id; //id of the task to update
+    console.log(`updating task${taskId} status${taskObj.status}`);
+    let sqlText = `UPDATE "tasksTable" SET "status" = $1 WHERE "id" = $2;`;
+    pool.query(sqlText, [taskObj.status, taskId])
+    .then((result) => {
+        console.log(`task with id ${taskId} updated`,result);
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log(`error shifting task status`, error);
+        res.sendStatus(500);
+    });
+
+});
 
 
 

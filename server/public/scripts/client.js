@@ -8,6 +8,7 @@ getTasks();
 //setup event listeners 
 setupClickListeners();
 $('#mainContainer').on('click','.deleteButton', handleDelete);
+$('#mainContainer').on('click','.complete-btn', editKoala);
 
 })
 
@@ -16,17 +17,24 @@ function setupClickListeners (){
         console.log( 'in addButton on click' );
         // get user input and put in an object
         let taskToSend = {
-          name : $('#taskIn').val(),
-          age : $('#dueDateIn').val(),
+         status:'Task Not Completed',
+          task: $('#taskIn').val(),
+          dueDate: $('#dueDateIn').val(),
         };
+        $('#taskIn').val('');
+        $('#dueDateIn').val('');
+
         // call saveTask with the new object
         saveTask( taskToSend );
-      });     
+      });
+      
+     
 };
 
 function getTasks(){
     console.log( 'in getTasks' );
   // ajax call to server to get koalas
+  
     $.ajax({
       method: 'GET',
       url: '/tasks',
@@ -42,7 +50,7 @@ function getTasks(){
 function saveTask( newTasks){
     console.log( 'in saveTask', newTasks );
     $.ajax({
-      method: 'POST',
+      method:'POST',
       url: '/tasks',
       data: newTasks
     }).then((response) => {
@@ -65,10 +73,10 @@ function renderTasksToDOM(tasks){
 //for each task, append a new row to out table
       $tr.data('task', task.id);
 // for row, append a button to indicate complition of the task
-    if(task.status === 'N'){
-        $tr.append(`<td><button class="complete-btn">Task Completed</button></td>`);
+    if(task.status === 'Task Not Completed'){
+        $tr.append(`<td><button class="complete-btn">Complete</button></td>`);
       }
-      else{$tr.append(`<td>${task.status}</td>`);}
+      else{$tr.append(`<td><button class="complete-btn">Task Completed</button></td>`);}
       $tr.append(`<td>${task.task}</td>`);
       $tr.append(`<td>${task.dueDate}</td>`); 
       $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
@@ -76,7 +84,31 @@ function renderTasksToDOM(tasks){
     }
   };
 
-
+  function editKoala(event){
+      event.preventDefault();
+    let taskId = $(this).parent().parent().data('task');  
+    let status = 'Task Not Completed';
+    let newStatus= $(this).parent().parent().text();
+   
+    if (status === 'Task Not Completed'){
+      newStatus = 'Task Completed';
+    }else if(status === 'Task Completed'){
+      newStatus = 'Task Not Completed';
+    }
+   
+    console.log(`in task editor`, taskId, status);
+    $.ajax({
+      method: 'PUT',
+      url: `/tasks/${taskId}`,
+      data: {status: newStatus}
+    }).then((response) => {
+      console.log(`the status of task is changed`, response);
+      getTasks();
+    }).catch((error) => {
+      console.log(`error`, error);
+    });
+    
+    }
 
   function handleDelete (event){
     event.preventDefault();
