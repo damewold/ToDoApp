@@ -8,7 +8,7 @@ getTasks();
 //setup event listeners 
 setupClickListeners();
 $('#mainContainer').on('click','.deleteButton', handleDelete);
-$('#mainContainer').on('click','.complete-btn', editKoala);
+$('#mainContainer').on('click','.complete-btn', editTasks);
 
 })
 
@@ -20,6 +20,7 @@ function setupClickListeners (){
          status:'Task Not Completed',
           task: $('#taskIn').val(),
           dueDate: $('#dueDateIn').val(),
+          priority:'Select your option'
         };
         $('#taskIn').val('');
         $('#dueDateIn').val('');
@@ -79,16 +80,22 @@ function renderTasksToDOM(tasks){
       else{$tr.append(`<td><button class="complete-btn">Task Completed</button></td>`);}
       $tr.append(`<td>${task.task}</td>`);
       $tr.append(`<td>${task.dueDate}</td>`); 
+      $tr.append(`<td><select><option value="" disabled selected>Select your option</option>
+                              <option id="optionOne">Urgent and Important</option>
+                              <option id="optionTwo">Not urgent and Important</option>
+                              <option id="optionThree">Urgent and Not Important</option>
+                              <option id="optionFour">Not urgent and Not Important</option></select></td>`); 
       $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
       $('#mainContainer').append($tr);
     }
   };
 
-  function editKoala(event){
+  function editTasks(event){
       event.preventDefault();
-    let taskId = $(this).parent().parent().data('task');  
+    let taskId = $(this).parent().parent().data('task');
+    $(this).parent().parent().css('background-color', 'lightgreen') ;
     let status = 'Task Not Completed';
-    let newStatus= $(this).parent().parent().text();
+    // let newStatus= $(this).parent().parent().value;
    
     if (status === 'Task Not Completed'){
       newStatus = 'Task Completed';
