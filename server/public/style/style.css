@@ -26,12 +26,14 @@ h1, h2, #addTask{
   .deleteButton{
     background-color: darkred;
     color: white;
+    cursor: pointer;
 
   } 
   
   .complete-btn{
     background-color: darkgreen;
     color: white;
+    cursor: pointer;
   }
 
   #app{
@@ -44,6 +46,7 @@ h1, h2, #addTask{
     background-color:darkred;
     color: white;
     display: inline;
+    cursor: pointer;
 }
 
 .table{

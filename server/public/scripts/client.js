@@ -88,7 +88,7 @@ function renderTasksToDOM(tasks){
   function editTasks(event){
       event.preventDefault();
     let taskId = $(this).parent().parent().data('task');
-    $(this).addClass('selected');
+    $(this).parent().parent().addClass('selected');
     let status = 'Task Not Completed';
 
     if (status === 'Task Not Completed'){
