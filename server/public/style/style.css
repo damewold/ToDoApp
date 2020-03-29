@@ -1,5 +1,7 @@
 body{
     background-color: lightgoldenrodyellow;
+    font-style: normal;
+    font:times,arial,icon;
 }
 header{
     background-color: lightgoldenrodyellow;
@@ -22,6 +24,10 @@ h1, h2, #addTask{
     padding: 5px;
     
    
+  }
+
+  .selected{
+      background-color: lightgreen;
   }
 
   .deleteButton{

@@ -77,7 +77,7 @@ function renderTasksToDOM(tasks){
     if(task.status === 'Task Not Completed'){
         $tr.append(`<td><button class="complete-btn">Complete</button></td>`);
       }
-      else{$tr.append(`<td class="taskComplete">${task.status}</td>`);}
+      else{$tr.append(`<td class="taskComplete">${task.status}</td>`);};
       $tr.append(`<td>${task.task}</td>`);
       $tr.append(`<td>${task.dueDate}</td>`); 
       $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
@@ -86,9 +86,11 @@ function renderTasksToDOM(tasks){
   };
 
   function editTasks(event){
+      event.preventDefault();
     let taskId = $(this).parent().parent().data('task');
+    $(this).addClass('selected');
     let status = 'Task Not Completed';
-   
+
     if (status === 'Task Not Completed'){
       newStatus = 'Task Completed';
     }else if(status === 'Task Completed'){
