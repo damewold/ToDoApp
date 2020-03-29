@@ -77,32 +77,24 @@ function renderTasksToDOM(tasks){
     if(task.status === 'Task Not Completed'){
         $tr.append(`<td><button class="complete-btn">Complete</button></td>`);
       }
-      else{$tr.append(`<td><button class="complete-btn">Task Completed</button></td>`);}
+      else{$tr.append(`<td class="taskComplete">${task.status}</td>`);}
       $tr.append(`<td>${task.task}</td>`);
       $tr.append(`<td>${task.dueDate}</td>`); 
-      $tr.append(`<td><select><option value="" disabled selected>Select your option</option>
-                              <option id="optionOne">Urgent and Important</option>
-                              <option id="optionTwo">Not urgent and Important</option>
-                              <option id="optionThree">Urgent and Not Important</option>
-                              <option id="optionFour">Not urgent and Not Important</option></select></td>`); 
       $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
       $('#mainContainer').append($tr);
     }
   };
 
   function editTasks(event){
-      event.preventDefault();
     let taskId = $(this).parent().parent().data('task');
-    $(this).parent().parent().css('background-color', 'lightgreen') ;
     let status = 'Task Not Completed';
-    // let newStatus= $(this).parent().parent().value;
    
     if (status === 'Task Not Completed'){
       newStatus = 'Task Completed';
     }else if(status === 'Task Completed'){
       newStatus = 'Task Not Completed';
-    }
-   
+    };
+
     console.log(`in task editor`, taskId, status);
     $.ajax({
       method: 'PUT',
@@ -116,6 +108,9 @@ function renderTasksToDOM(tasks){
     });
     
     }
+  
+
+
 
   function handleDelete (event){
     event.preventDefault();

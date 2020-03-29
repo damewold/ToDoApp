@@ -1,0 +1,70 @@
+body{
+    background-color: lightgoldenrodyellow;
+}
+header{
+    background-color: lightgoldenrodyellow;
+}
+
+h1, h2, #addTask{
+    background-color: lightgoldenrodyellow;
+    color:purple;
+    display:inline-block;
+}
+
+.taskComplete{
+    background-color: lightgreen;
+    color:darkred
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    
+   
+  }
+
+  .deleteButton{
+    background-color: darkred;
+    color: white;
+
+  } 
+  
+  .complete-btn{
+    background-color: darkgreen;
+    color: white;
+  }
+
+  #app{
+   block-size: 50px;
+   word-wrap: normal;
+  }
+ 
+
+#addButton{
+    background-color:darkred;
+    color: white;
+    display: inline;
+}
+
+.table{
+   
+    color: darkred;
+}
+
+
+td:nth-child(even){
+    background-color: azure
+}
+
+td:nth-child(odd){
+    background-color:lightcyan;
+}
+
+th:nth-child(even){
+    background-color: azure
+}
+
+th:nth-child(odd){
+    background-color:lightcyan;
+}
