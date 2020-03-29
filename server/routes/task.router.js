@@ -20,8 +20,8 @@ taskRouter.post('/', (req, res) => {
     console.log('tasks arrived on server', req.body);
     let taskObj= req.body;
     //add the tasks to the database
-    let sqlText = `INSERT INTO "tasksTable" ("status","task","dueDate","priority") VALUES($1,$2,$3,$4)`;
-    pool.query(sqlText, [taskObj.status, taskObj.task, taskObj.dueDate,taskObj.priority])
+    let sqlText = `INSERT INTO "tasksTable" ("status","task","dueDate") VALUES($1,$2,$3)`;
+    pool.query(sqlText, [taskObj.status, taskObj.task, taskObj.dueDate])
     .then((result) => {
         console.log(`task added to database`, result);
         res.sendStatus(200);
