@@ -93,34 +93,31 @@ function renderTasksToDOM(tasks){
  
  
 
-  function editTasks(event){
-      event.preventDefault();
-    let taskId = $(this).parent().parent().data('task');
-   
-    
-   
-    let status = 'Task Not Completed';
+function editTasks(event){
+  event.preventDefault();
+let taskId = $(this).parent().parent().data('task');
+$(this).parent().prev().prev().addClass('selected')
+let status = 'Task Not Completed';
 
-    if (status === 'Task Not Completed'){
-      newStatus = 'Task Completed';
-    }else if(status === 'Task Completed'){
-      newStatus = 'Task Not Completed';
-    };
+if (status === 'Task Not Completed'){
+  newStatus = 'Task Completed';
+}else if(status === 'Task Completed'){
+  newStatus = 'Task Not Completed';
+};
 
-    console.log(`in task editor`, taskId, status);
-    $.ajax({
-      method: 'PUT',
-      url: `/tasks/${taskId}`,
-      data: {status: newStatus}
-    }).then((response) => {
-      console.log(`the status of task is changed`, response);
-      getTasks();
-    }).catch((error) => {
-      console.log(`error`, error);
-    });
-    
-    };
-  
+console.log(`in task editor`, taskId, status);
+$.ajax({
+  method: 'PUT',
+  url: `/tasks/${taskId}`,
+  data: {status: newStatus}
+}).then((response) => {
+  console.log(`the status of task is changed`, response);
+  getTasks();
+}).catch((error) => {
+  console.log(`error`, error);
+});
+
+}
 
 
 
