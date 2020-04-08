@@ -2,7 +2,7 @@
 const express =require('express');
 const app=express();
 const bodyparser=require('body-parser');
-const port = 3000;
+const PORT = process.env.PORT || 4000;
 const taskRouter=require('./routes/task.router');
 
 //use bodyparser 
@@ -13,8 +13,8 @@ app.use(express.static('server/public'));
 app.use('/tasks', taskRouter);
 
 //start listening
-app.listen(3000, ()=>{
-    console.log('listening on port', 3000);
+app.listen(PORT, ()=>{
+    console.log('listening on port', PORT);
 })
 
 

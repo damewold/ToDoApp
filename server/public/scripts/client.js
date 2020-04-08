@@ -10,6 +10,7 @@ setupClickListeners();
 $('#mainContainer').on('click','.deleteButton', handleDelete);
 $('#mainContainer').on('click','.complete-btn', editTasks);
 
+
 })
 
 function setupClickListeners (){
@@ -23,13 +24,14 @@ function setupClickListeners (){
           task: $('#taskIn').val(),
           dueDate: $('#dueDateIn').val(),
         };
-        $('#taskIn').val('');
-        $('#dueDateIn').val('');
+       
 
         // call saveTask with the new object
         saveTask( taskToSend );}
       });
-      
+     
+      $('#taskIn').val('');
+      $('#dueDateIn').val('');
      
 };
 
@@ -64,32 +66,39 @@ function saveTask( newTasks){
 }
 
 function renderTasksToDOM(tasks){
-    console.log('in render');
-    //empty the container
-     $('#mainContainer').empty();
-    //append the data
-    for(let i = 0; i <tasks.length; i += 1){
-      let task = tasks[i];
-     
-      let $tr=$(`<tr></tr>`);
+  console.log('in render');
+  //empty the container
+   $('#mainContainer').empty();
+  //append the data
+  for(let i = 0; i <tasks.length; i += 1){
+    let task = tasks[i];
+
+    let $tr=$(`<tr></tr>`);
 //for each task, append a new row to out table
-      $tr.data('task', task.id);
+    $tr.data('task', task.id);
 // for row, append a button to indicate complition of the task
-    if(task.status === 'Task Not Completed'){
-        $tr.append(`<td><button class="complete-btn">Complete</button></td>`);
-      }
-      else{$tr.append(`<td class="taskComplete">${task.status}</td>`);};
-      $tr.append(`<td>${task.task}</td>`);
-      $tr.append(`<td>${task.dueDate}</td>`); 
-      $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
-      $('#mainContainer').append($tr);
+  if(task.status === 'Task Not Completed'){
+      $tr.append(`<td><button class="complete-btn">Complete</button></td>`);
     }
-  };
+    else{$tr.append(`<td class="taskComplete">${task.status}</td>`);};
+    $tr.append(`<td>${task.task}</td>`);
+    let startDate = new Date(task.dueDate);
+    $tr.append(`<td>${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}</td>`); 
+    $tr.append(`<td><button class="deleteButton">Delete</button></td>`);
+    $('#mainContainer').append($tr);
+  }
+};
+
+   
+ 
+ 
 
   function editTasks(event){
       event.preventDefault();
     let taskId = $(this).parent().parent().data('task');
-    $(this).parent().prev().prev().addClass('selected')
+   
+    
+   
     let status = 'Task Not Completed';
 
     if (status === 'Task Not Completed'){
@@ -110,7 +119,7 @@ function renderTasksToDOM(tasks){
       console.log(`error`, error);
     });
     
-    }
+    };
   
 
 
@@ -134,9 +143,10 @@ function renderTasksToDOM(tasks){
       if(($('#taskIn').val() === '')) {
         $('#alert').append("task is blank");
         return false;
-      }else if(($('#dueDateIn').val()==='')||($('#dueDateIn').val()==='0000-00-00')){
+      }else if(($('#dueDateIn').val()==='')){
         $('#alert').append("Due Date is blank or not appropriately filled");
         return false;
   }else{
       return true;}
+      
   };

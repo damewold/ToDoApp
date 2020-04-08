@@ -18,4 +18,4 @@ pool.on("error", (err)=>{
     console.log('error on connecting to postgress',err)
 });
 
-module.exports=pool;
+module.exports = pool;

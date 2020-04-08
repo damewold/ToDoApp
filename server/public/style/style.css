@@ -23,9 +23,7 @@ h1, h2, #addTask{
 }
 
 
-  .selected{
-      background-color: lightgreen;
-  }
+ 
 
   .deleteButton{
     background-color: darkred;
@@ -39,6 +37,10 @@ h1, h2, #addTask{
     color: white;
     cursor: pointer;
   }
+
+ .green{
+     background-color: lightgreen;
+ }
 
   #app{
    block-size: 50px;

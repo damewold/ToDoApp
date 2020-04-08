@@ -18,15 +18,16 @@ taskRouter.get('/', (req, res) => {
 
 taskRouter.post('/', (req, res) => {
     console.log('tasks arrived on server', req.body);
-    let taskObj= req.body;
-    //add the tasks to the database
-    let sqlText = `INSERT INTO "tasksTable" ("status","task","dueDate") VALUES($1,$2,$3)`;
-    pool.query(sqlText, [taskObj.status, taskObj.task, taskObj.dueDate])
+    let tasksObj= req.body;
+    //add the treats to the database
+    let sqlText = `INSERT INTO "tasksTable" ("status", "task", "dueDate")
+    VALUES($1,$2,$3);`;
+    pool.query(sqlText, [tasksObj.status, tasksObj.task, tasksObj.dueDate])
     .then((result) => {
-        console.log(`task added to database`, result);
+        console.log(`tasks added to database`, result);
         res.sendStatus(200);
     }).catch((error) => {
-        console.log(`error in adding task to database`, error);
+        console.log(`error in adding tasks to database`, error);
         res.sendStatus(500);
     });
 
@@ -35,10 +36,10 @@ taskRouter.post('/', (req, res) => {
 
 // DELETE
 taskRouter.delete('/:id', (req, res) => {
-    let taskId = req.params.id;
-    console.log('In delete task', taskId);
+    let tasksId = req.params.id;
+    console.log('In delete tasks', tasksId);
     let sqlText = `DELETE FROM "tasksTable" WHERE "id" = $1;`;
-    pool.query(sqlText, [taskId])
+    pool.query(sqlText, [tasksId])
     .then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
@@ -50,17 +51,17 @@ taskRouter.delete('/:id', (req, res) => {
 //PUT
 
 taskRouter.put(`/:id`, (req, res) => {
-    let taskObj = req.body; 
-    let taskId = req.params.id; 
-    console.log(`updating task${taskId} status${taskObj.status}`);
+    let tasksObj = req.body; 
+    let tasksId = req.params.id; 
+    console.log(`updating tasks${tasksId} status"${tasksObj.status}`);
     let sqlText = `UPDATE "tasksTable" SET "status" = $1 WHERE "id" = $2;`;
-    pool.query(sqlText, [taskObj.status, taskId])
+    pool.query(sqlText, [tasksObj.status, tasksId])
     .then((result) => {
-        console.log(`task with id ${taskId} updated`,result);
+        console.log(`tasks with id ${tasksId} updated`,result);
         res.sendStatus(200);
     })
     .catch((error) => {
-        console.log(`error shifting task status`, error);
+        console.log(`error updating tasks status`, error);
         res.sendStatus(500);
     });
 
