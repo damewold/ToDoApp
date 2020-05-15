@@ -1,59 +1,50 @@
-# Project Name
+![MIT LICENSE](https://img.shields.io/github/license/scottbromander/the_marketplace.svg?style=flat-square)
+![REPO SIZE](https://img.shields.io/github/repo-size/scottbromander/the_marketplace.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/scottbromander/the_marketplace.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/scottbromander/the_marketplace.svg?style=social)
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# NIICE LIBRARY Project
 
-## Description
+## Description 
 
-Your project description goes here. What problem did you solve? How did you solve it?
+_Duration: 2 day Sprint_
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+ToDo APP is a web app that enables people to better organize their day through setting plans for the day. The app allows people to create tasks for each day based on the priority they have for them. It is also up to the user to decide the urgency of the the tasks at hand. 
 
-# The To-Do App
-You are going to create a 'TO DO' application. This type of application is very common to tackle when learning a new language, which makes it extremely valuable to work through for the first time. Chances are good that at some point in your career you will tackle this again while learning another language.
+The aim of the app is to make the organization and planinning of our day so much more easier.So much more effective. In the process help people conserve their time and energy and be more productive.
 
-## Here are the specific components for the challenge:
+To see the fully functional site, please visit: https://infinite-plateau-85667.herokuapp.com/
 
-<!-- 1. Create a front end experience that allows a user to create a Task. -->
-<!-- 2. When the Task is created, it should be stored inside of a database (SQL) -->
-3. Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
-<!-- 4. Each Task should have an option to 'Complete' or 'Delete'. -->
-5. When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be 'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-6. Whether or not a Task is complete should also be stored in the database.
-<!-- 7. Deleting a Task should remove it both from the front end as well as the Database. -->
+## Built with
 
-# Styling
+- Node.js
+- Express
+- HTML5
+- CSS
+- JavaScript
+- PostgreSQL
+- Heroku
 
-## Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
+## Installation 
 
-* background color of the page
-* font family and size
-* text color & or background color of tasks to show whether or not they have been completed
+1. Download or clone this git repository.
+2. Create a local repository.
+3. Open your editor of choice and fun an npm install in the terminal.
+4. Run the file in the editor.
+5. Run npm start.
 
-# Approach
+## Prerequisites
 
-<!-- We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park! -->
-
-# Create a Database
-<!-- Be sure to create a new database through Postico. Use the name weekend-to-do-app. You will need to use this name in your database connection configuration on your server. -->
-
-# Database Structure
-Please include a database.sql text file in your repo that includes all of your CREATE TABLE queries. This is so we can re-create your database while testing your app.
+- [Node.js](https://nodejs.org/en/)
+- [PostrgeSQL](https://www.postgresql.org/)
 
 
-# Things to include in a TODO list
 
-1. status Done-is it complete or not, once the complete button is clicked it should show a tick sign in its place
-2. Task or Project to be done-an input with an add button
-3. Due date 
-4. Priority-urgent and important, urgent and unimportant, important but is not urgent
-5. Delete button that will delete the whole task
+## Acknowledgement
 
-I will have three tables that will catagorize the 
-the tasks based on priority 
-1. urgent and important
-3. urgent and unimportant
-2. not urgent and important
-4. not urgent and not important
+Thanks to Prime Digital Academy who equipped and helped me to make this application a reality. I also want to thank my cohort who have been an invaluable support throughout this project. 
 
-I can use color based priotitazation
+## Support
+
+If you have suggestions or issues, please email me at damewold@gmail.com. 
 
