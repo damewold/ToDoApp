@@ -9,7 +9,7 @@
 
 _Duration: 2 day Sprint_
 
-ToDo APP is a web app that enables people to better organize their day through setting plans for the day. The app allows people to create tasks for each day based on the priority they have for them. It is also up to the user to decide the urgency of the the tasks at hand. 
+ToDo APP is a web app that enables people to better organize their day through setting tasks. The app allows people to create tasks for each day based on the priority they have for them. It is also up to the user to decide the urgency of the the tasks at hand. 
 
 The aim of the app is to make the organization and planinning of our day so much more easier.So much more effective. In the process help people conserve their time and energy and be more productive.
 
