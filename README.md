@@ -5,6 +5,8 @@
 
 # TO DO APP
 
+![](server/public/ToDo-App.png)
+
 ## Description 
 
 _Duration: 2 day Sprint_
