@@ -5,7 +5,7 @@
 
 # TO DO APP
 
-![](server/public/ToDo-App.png)
+<img src='https://github.com/damewold/ToDoApp/blob/master/server/public/toDo.gif'/>
 
 ## Description 
 
